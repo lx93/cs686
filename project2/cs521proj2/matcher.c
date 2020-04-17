@@ -35,22 +35,37 @@ int matches_leading(char *partial_line, char *pattern) {
 int rgrep_matches(char *line, char *pattern) {
     //while (*line!=0) {printf("%c",*line);line++;}
 
-    char* origin = pattern;
-    while (*line!=0)
-    {
-	if (*pattern==0) return 1;
+//    char* origin = pattern;
+//    while (*line!=0)
+//    {
+//	if (*pattern==0) return 1;
 //	printf("Comparing %c & %c\n",*line,*pattern);
-        if (*line!=*pattern){
-//	    printf("not match, inspecting next c in line     ");
-	    line++;
-	    pattern = origin;
-	}
-	else
-       	{
-	    line++;
-	    pattern++;
-	}
-    }
-    printf("returning 0\n");
-    return 0;
+//        if (*line!=*pattern){
+////	    printf("not match, inspecting next c in line     ");
+//	    line++;
+//	    pattern = origin;
+//	}
+//	else
+//       	{
+//	    line++;
+//	    pattern++;
+//	}
+//    }
+//    printf("returning 0\n");
+//    return 0;
+//
+
+	if (*line==0) return 1;
+	else {
+
+		printf("Comparing %c & %c\n",*line,*pattern);
+		if (*pattern!=*line){
+			printf("no match");
+			return rgrep_matches(line++,pattern);
+		}
+		else {
+			printf("matched");
+			return rgrep
+		}
+	}	
 }
