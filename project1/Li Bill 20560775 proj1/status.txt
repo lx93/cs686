@@ -1,0 +1,2 @@
+Bill Li - Part1 and part2 of the project are both executed inside of the program's main function.
+Everything works as expected.

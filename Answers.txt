@@ -1,0 +1,94 @@
+Bill Li
+20560775
+
+1. When (32<=T<212) it will print "water" only.
+
+2. void month (int month){
+  switch (month){
+    case 1:
+      printf("January");
+      break;
+    case 2:
+      printf("Feburary");
+      break;
+    case 3:
+      printf("March");
+      break;
+    case 4:
+      printf("April");
+      break;
+    case 5:
+      printf("May");
+      break;
+    case 6:
+      printf("June");
+      break;
+    case 7:
+      printf("July");
+      break;
+    case 8:
+      printf("August");
+      break;
+    case 9:
+      printf("September");
+      break;
+    case 10:
+      printf("October");
+      break;
+    case 11: 
+      printf("November");
+      break;
+    case 12:
+      printf("December");
+      break;
+  }
+  printf("\nInvalid Month");
+}
+
+3. void printAsterisks (){
+  for (int i = 0; i < 9; i++) {
+    for (int j=0;j<=i;j++){
+      printf("*");
+    }
+    printf("\n");
+  }
+}
+
+4. int factorial (){
+  int n;
+  printf("Enter a number: ");
+  scanf("%d",&n);
+
+  int ans = n;
+  for (int i=2;i<n;i++){
+    ans = ans * i;
+  }
+  return ans;
+}
+
+5. int digitSum (){
+  int ans = 0;
+  int n;
+  printf("Enter a number: ");
+  scanf("%d",&n);
+
+  while (n!=0){
+    ans += n%10;
+    n = n/10;
+  }
+  return ans;
+}
+
+6. int commonDivisor (n1,n2){
+  if (n1==n2) return n1;
+  else if(n1>n2){
+    int residual = n1%n2;
+    if (n2%residual==0) return residual;
+    else return commonDivisor(n2,residual);
+  } else {
+     int residual = n2%n1;
+     if (n1%residual==0) return residual;
+     else return commonDivisor(n1,residual);
+  }
+  return 1;
+}

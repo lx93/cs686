@@ -1,0 +1,54 @@
+# define NUM_OF_USERS 10
+# define MAX_USER_INPUT_SIZE 100
+
+
+void addUser ( const char * username , const char * password , int * user_count, char creds [2][ NUM_OF_USERS ][ MAX_USER_INPUT_SIZE ])
+{
+  strcpy(*(*creds+*user_count),username);
+  strcpy(*(*(creds+1)+*user_count),password);
+  (*user_count)++;
+}
+
+int getUserIndex ( const char * username , char * creds , int user_count )
+{
+  for (int i=0;i<user_count;i++)
+  {
+    char* str = *(&creds)+i*MAX_USER_INPUT_SIZE;
+    if (strcmp(str,username)==0) return i;
+  }
+  return -1;
+}
+
+void replaceSecondChar ( char new_char , const char * username , int user_count , char creds [2][ NUM_OF_USERS ][ MAX_USER_INPUT_SIZE ])
+{
+  int i = getUserIndex(username, creds[0][0], user_count);
+  if (i!=-1){
+    *(*(*creds+i)+1) = new_char;
+  }
+}
+
+void printAll ( char * creds , int user_count )
+{
+  for (int i=0;i<user_count;i++){
+    char* usr = *(&creds)+i*MAX_USER_INPUT_SIZE;
+    char* passwd = usr+NUM_OF_USERS*MAX_USER_INPUT_SIZE;
+    printf("username:%s, password:%s\n",usr,passwd);
+  }
+}
+
+
+
+
+
+int main ( void ) {
+  char creds [2][ NUM_OF_USERS ][ MAX_USER_INPUT_SIZE ];
+  int user_count = 0; // no users in the database yet .
+  addUser (" admin " , " s #1 Pa5 " , & user_count , creds );
+  addUser (" vahab " , " fgH !12" , & user_count , creds );
+
+  // getUserIndex(" vahab ", creds[0][0], user_count);
+  replaceSecondChar ('@', " vahab " , user_count , creds );
+  printf (" The total number of users : % d \n " , user_count );
+  printAll ( creds [0][0] , user_count );
+  return 0;
+}

@@ -1,0 +1,10 @@
+grepis a UNIX utility that is used to search for patterns in text files. 
+It’s a powerful and versatile tool, and inthis project you will implement a version that,
+ while simplified, should still be useful.1Your project is to complete the implementation ofrgrep,
+ our simplified, restrictedgrep.rgrepis “restricted” inthe sense that the patterns it
+ matches only support a few regular operators (the easier ones).  
+ The wayrgrepisused is that a pattern is specified on the command line.
+ rgrepthen reads lines from its standard input and printsthem out on its standard 
+ output if and only if the pattern “matches” the line.
+ For example, we can usergreptosearch for lines that contain text file names that are at least 3 characters long (plus the extension) in a file like thefollowing:
+ 
