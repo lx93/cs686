@@ -4,16 +4,6 @@
 
 #include "matcher.h"
 #include <stdio.h>
-#include <string.h>
-/**
- * Your helper functions can go below this line
- */
-
-
-
-/**
- * Your helper functions can go above this line
- */
 
 
 /**
