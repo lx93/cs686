@@ -21,24 +21,26 @@
  * the first char of partial_line.
  */
 int matches_leading(char *partial_line, char *pattern) {
+
+//	printf("Comparing two chars: %c & %c     \n", *partial_line,*pattern);
+
 	if (*pattern==0) return 1;
 	else if (*partial_line==0) return 0;
 	else if (*pattern=='\\') {
-		if (*(pattern+1)!=*partial_line) return 0;
+		if (*(pattern+1)!=*partial_line&&*(pattern+2)!='?') return 0;
 		else return matches_leading(partial_line+1,pattern+2);
 	}
 	else {
-		//printf("Comparing two chars: %c & %c     \n", *partial_line,*pattern);
 	
-		if (*pattern=='.') return matches_leading(partial_line+1,pattern+1);
-		else if (*pattern=='+'){
-			while (*partial_line==*(pattern-1)) partial_line++;
-			return matches_leading(partial_line,pattern+1);
-		}
-		else if (*(pattern+1)=='?') {
+		if (*(pattern+1)=='?') {
 			if (*pattern==*partial_line) return matches_leading(partial_line+1,pattern+2);
 			else if (*partial_line==*(pattern+2)) return matches_leading(partial_line,pattern+2);
 			else return 0;
+		}
+		else if (*pattern=='.') return matches_leading(partial_line+1,pattern+1);
+		else if (*pattern=='+'){
+			while (*partial_line==*(pattern-1)) partial_line++;
+			return matches_leading(partial_line,pattern+1);
 		}
 		else if (*pattern==*partial_line)return matches_leading(partial_line+1,pattern+1);
 		else return 0;

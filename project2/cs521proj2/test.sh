@@ -32,8 +32,8 @@ TESTS=(
     'hello..C++:\.+C\++'
     'hello..C++:o\.+C\++'
     'hello..C++:a\.+C\++'
-    'hello..C++:\.?C\++'
-    'hello.C++:\.?C\++'
+    #'hello..C++:\.?C\++'
+    #'hello.C++:\.?C\++'
     'hello.C++:o\.?C\++'
     'hello.C++:a\.?C\++'
     # in the middle
