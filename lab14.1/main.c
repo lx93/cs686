@@ -20,8 +20,9 @@ char * cs521Hash ( const char * password ) {
 }
 
 struct user * createUsers ( int * count ) {
+    printf("asd");
     FILE *fp;
-    fp = fopen("/home/lx93/lab141/credential_file", "r");
+    fp = fopen("credential_file", "r");
     if (fp==NULL) {
         printf("Error in opening file.\n");
         fclose(fp);
@@ -35,15 +36,17 @@ struct user * createUsers ( int * count ) {
         }
     }
     *count+=1;
-    printf("%d",*count);
+    printf("%d\n",*count);
     struct user* users = calloc(*count, sizeof(struct user));
     fclose(fp);
+	printf("dsa\n");
     return users;
 }
 
 void populateUsers ( void * users ) {
+    printf("populating");
     FILE* fp;
-    fp = fopen("/home/lx93/lab141/credential_file", "r");
+    fp = fopen("credential_file", "r");
     if (fp==NULL) {
         printf("Error in opening file.\n");
         fclose(fp);
@@ -78,7 +81,6 @@ void populateUsers ( void * users ) {
         }
         c = getc(fp);
         cp = ((struct user*)users + i)->password;
-//        cp = cs521Hash(cp);
         while(c!='\t'){
             *cp=c;
             cp++;
@@ -121,7 +123,7 @@ int checkAdminPassword ( char * password , struct user * users , int count )
 
 struct user * addUser ( struct user * users , int * count , char * username , char * password , char * firstname , char * lastname , int admin ) {
     *count+=1;
-    realloc(users, *count * sizeof(struct user));
+    users = (struct user *)realloc(users, *count * sizeof(struct user));
     strcpy((users+*count-1)->username,username);
     strcpy((users+*count-1)->password,password);
     strcpy((users+*count-1)->firstname,firstname);
@@ -134,7 +136,7 @@ struct user * addUser ( struct user * users , int * count , char * username , ch
 
 void saveUsers ( struct user * users , int count ) {
     FILE* fp;
-    fp = fopen("/home/lx93/lab141/credential_file2", "w");
+    fp = fopen("credential_file", "w");
     if (fp==NULL) {
         printf("Error in opening file.\n");
         fclose(fp);
@@ -165,6 +167,7 @@ void saveUsers ( struct user * users , int count ) {
         putc('\t',fp);
 
         cp = (users + i)->password;
+	cp = cs521Hash(cp);
         while (*cp!=0){
             putc(*cp,fp);
             cp++;
@@ -182,8 +185,9 @@ int main ( void )
 {
     int user_count = 0;
     struct user *users = createUsers(&user_count);
+printf("1");
     if ( users == NULL ) return EXIT_FAILURE ;
-
+    printf("2");
     populateUsers (users);
     printf (" Enter admin password to add new users :");
     char entered_admin_password [50];
