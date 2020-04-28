@@ -17,36 +17,34 @@ struct user {
 
 char * cs521Hash ( const char * password ) {
      return crypt(password,"00");
+//return password;
 }
 
 struct user * createUsers ( int * count ) {
-    printf("asd");
     FILE *fp;
-    fp = fopen("credential_file", "r");
+    fp = fopen("/home/lx93/Dropbox/Documents/school/USF S2020/CS686/cs686/lab14.1/credential_file", "r");
+//    fp = fopen("credential_file", "r");
     if (fp==NULL) {
         printf("Error in opening file.\n");
         fclose(fp);
         return NULL;
     }
-
     int c;
     while ((c=getc(fp))!=EOF){
-        if (c=='\n'){
-            *count+=1;
-        }
+        if (c=='\n') *count+=1;
     }
     *count+=1;
     printf("%d\n",*count);
     struct user* users = calloc(*count, sizeof(struct user));
     fclose(fp);
-	printf("dsa\n");
     return users;
 }
 
 void populateUsers ( void * users ) {
-    printf("populating");
+    printf("populating\n\n\n");
     FILE* fp;
-    fp = fopen("credential_file", "r");
+    fp = fopen("/home/lx93/Dropbox/Documents/school/USF S2020/CS686/cs686/lab14.1/credential_file", "r");
+//    fp = fopen("credential_file", "r");
     if (fp==NULL) {
         printf("Error in opening file.\n");
         fclose(fp);
@@ -136,7 +134,8 @@ struct user * addUser ( struct user * users , int * count , char * username , ch
 
 void saveUsers ( struct user * users , int count ) {
     FILE* fp;
-    fp = fopen("credential_file", "w");
+    fp = fopen("/home/lx93/Dropbox/Documents/school/USF S2020/CS686/cs686/lab14.1/credential_file", "w");
+//    fp = fopen("credential_file", "w");
     if (fp==NULL) {
         printf("Error in opening file.\n");
         fclose(fp);
@@ -185,9 +184,7 @@ int main ( void )
 {
     int user_count = 0;
     struct user *users = createUsers(&user_count);
-printf("1");
     if ( users == NULL ) return EXIT_FAILURE ;
-    printf("2");
     populateUsers (users);
     printf (" Enter admin password to add new users :");
     char entered_admin_password [50];
