@@ -54,9 +54,11 @@ void populateUsers ( void * users ) {
     char c;
     int i = 0;
     char* cp;
+    printf("%c",getc(fp));
     while (c!=EOF)
     {
         c = getc(fp);
+        if (c==EOF) break;
         cp = ((struct user*)users + i)->firstname;
         while(c!='\t'){
             *cp=c;
