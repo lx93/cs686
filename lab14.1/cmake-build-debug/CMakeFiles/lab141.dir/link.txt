@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/lab141.dir/main.c.o  -o lab141 

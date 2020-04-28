@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lx93/lab141/main.c
+stdlib.h
+-
+string.h
+-
+stdio.h
+-
+unistd.h
+-
+crypt.h
+-
+
