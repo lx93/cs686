@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/lx93/Dropbox/Documents/school/USF S2020/CS686/cs686/lab14.2/main.c
+string.h
+-
+stdio.h
+-
+
