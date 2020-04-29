@@ -33,15 +33,12 @@ struct user * createUsers ( int * count ) {
     while ((c=getc(fp))!=EOF){
         if (c=='\n') *count+=1;
     }
-    *count+=1;
-    printf("%d\n",*count);
     struct user* users = calloc(*count, sizeof(struct user));
     fclose(fp);
     return users;
 }
 
 void populateUsers ( void * users ) {
-    printf("populating\n\n\n");
     FILE* fp;
 //    fp = fopen("/home/lx93/Dropbox/Documents/school/USF S2020/CS686/cs686/lab14.1/credential_file", "r");
     fp = fopen("credential_file", "r");
@@ -54,7 +51,6 @@ void populateUsers ( void * users ) {
     char c;
     int i = 0;
     char* cp;
-    printf("%c",getc(fp));
     while (c!=EOF)
     {
         c = getc(fp);
@@ -105,8 +101,8 @@ int checkAdminPassword ( char * password , struct user * users , int count )
         {
             printf("%s\n",(users+i)->firstname);
             printf("%s\n",password);
-            //#1Pa5
-            if (strcmp("s",password)==0) {
+           
+            if (strcmp("s#1Pa5",password)==0) {
                 printf("password correct!\n");
                 return 1;
             }
