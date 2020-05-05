@@ -1,0 +1,15 @@
+Question 1:
+int ll_has_cycle(userInfo *head) {
+    userInfo* trav1 = head;
+    userInfo* trav2 = head;
+
+    while (trav2!=NULL){
+        trav2 = trav2->next->next;
+        trav1 = trav1->next;
+        if (trav1==trav2) return 1;
+    }
+    return 0;
+}
+
+Question 2:
+On line13, the while condition should be (a!=NULL && b!=NULL) so there is no null pointer exception.
