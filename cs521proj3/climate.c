@@ -93,11 +93,12 @@ void print_report(struct climate_info *states[], int num_states);
 int main(int argc, char *argv[]) {
 
     /* TODO: fix this conditional. You should be able to read multiple files. */
-    if (argc != 2) {
+    /*
+	if (argc != 2) {
         printf("Usage: %s tdv_file1 tdv_file2 ... tdv_fileN \n", argv[0]);
         return EXIT_FAILURE;
     }
-
+	*/
     /* Let's create an array to store our state data in. As we know, there are
      * 50 US states. */
     Info *states[NUM_STATES] = { NULL };
