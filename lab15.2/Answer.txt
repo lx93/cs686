@@ -1,0 +1,5 @@
+1. the function setValue() needs to check for index is between 0 and len. adding a if statement will fix it. if (index>=0 && index<len){}
+
+3. if a malicious attacker enters a string thats longer that buffer array length 20, then they can cause stack smashing.
+
+4. a or b could be really large integers and causes integer overflow. instead of simply returning a+b, cast one of them into a long long type.
